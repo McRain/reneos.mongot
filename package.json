@@ -1,6 +1,6 @@
 {
   "name": "@reneos/mongot",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Tool for convenient use of MongoDB database",
   "main": "index.js",
   "type": "module",
@@ -12,7 +12,15 @@
       "require": "./index.cjs",
       "default": "./index.mjs"
     }
-  },
+	},
+	"repository": {
+    "type": "git",
+    "url": "git+https://github.com/McRain/reneos.mongot.git"
+	},
+	"keywords": [
+    "mongodb",
+    "tools"
+  ],
   "author": {
     "name": "Viktor Abdulov",
     "email": "dev@reneos.com"
