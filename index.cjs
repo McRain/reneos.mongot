@@ -1,6 +1,6 @@
 const Mongo = require("mongodb")
 
-const DataConnection = require("./dbconn.js")
+const DataConnection = require("./dbconn.cjs")
 
 let _db
 let _conn
