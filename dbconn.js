@@ -14,9 +14,10 @@ class DataConnection {
 	 * 
 	 * 
 	 */
-	constructor() {		
+	constructor(key) {		
 		this._conn = null
 		this._db = null
+		this._key = key
 		return new Proxy(this, {
 			get(target, prop) {
 				if (target[prop] === undefined)
@@ -41,7 +42,7 @@ class DataConnection {
 				useUnifiedTopology: true
 			}
 		}, options || {})
-		_conns[`${this._config.url}${this._config.database}`] = this
+		_conns[this._key || `${this._config.url}${this._config.database}`] = this
 		this._conn = await Mongo.MongoClient.connect(this._config.url, this._config.options)
 		this._db = this._conn.db(this._config.database)
 		return this
