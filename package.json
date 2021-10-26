@@ -1,23 +1,17 @@
 {
   "name": "@reneos/mongot",
-  "version": "1.0.17",
+  "version": "1.0.22",
   "description": "Tool for convenient use of MongoDB database",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "exports": {
-    ".": {
-      "require": "./index.cjs",
-      "default": "./index.js"
-    }
-	},
-	"repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/McRain/reneos.mongot.git"
-	},
-	"keywords": [
+  },
+  "keywords": [
     "mongodb",
     "tools"
   ],
@@ -27,6 +21,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "mongodb": "^3.6.3"
+    "mongodb": "^4.1.3"
   }
 }

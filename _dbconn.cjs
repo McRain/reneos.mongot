@@ -1,4 +1,4 @@
-const Mongo  = require("mongodb")
+const Mongo = require("mongodb")
 
 const _conns = {}
 
@@ -14,10 +14,10 @@ class DataConnection {
 	 * 
 	 * 
 	 */
-	constructor(key) {		
+	constructor(key) {
 		this._conn = null
 		this._db = null
-		this._key = key
+		this._key = key || null
 		return new Proxy(this, {
 			get(target, prop) {
 				if (target[prop] === undefined)
@@ -33,8 +33,8 @@ class DataConnection {
 	 */
 	async open(options) {
 		this._config = Object.assign({
-			url:"mongodb://localhost:27017",
-			database:"",
+			url: "mongodb://localhost:27017",
+			database: "",
 			options: {
 				socketTimeoutMS: 90000,
 				keepAlive: true,
@@ -42,17 +42,22 @@ class DataConnection {
 				useUnifiedTopology: true
 			}
 		}, options || {})
-		_conns[this._key || `${this._config.url}${this._config.database}`] = this
-		this._conn = await Mongo.MongoClient.connect(this._config.url, this._config.options)
-		this._db = this._conn.db(this._config.database)
+		if (!this._key) {
+			this._key = `${this._config.url}${this._config.database}`
+		}
+		if (!_conns[this._key]) {
+			_conns[this._key] = this
+			this._conn = await Mongo.MongoClient.connect(this._config.url, this._config.options)
+			this._db = this._conn.db(this._config.database)
+		}
 		return this
 	}
 
 	/**
 	 * 
 	 */
-	async close(){
-		if(!this._conn)
+	async close() {
+		if (!this._conn)
 			return
 		try {
 			this._conn.close()
@@ -62,4 +67,4 @@ class DataConnection {
 	}
 }
 
-module.exports =  DataConnection
+module.exports = DataConnection

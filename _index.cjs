@@ -1,4 +1,4 @@
-const Mongo = require("mongodb")
+const {MongoClient} = require("mongodb")
 
 const DataConnection = require("./dbconn.cjs")
 
@@ -39,8 +39,13 @@ class Database {
 	
 	
 	static async Init(config) {
-			_conn = await Mongo.MongoClient.connect(config.url,_options)
-			_db = _conn.db(config.database)
+		_conn = new MongoClient(config.url,config.options)
+		try {
+			await _conn.connect()
+		} catch (error) {
+			throw error
+		}
+		_db = _conn.db(config.database)
 	}
 }
 const DataManager = new Proxy(Database, {
