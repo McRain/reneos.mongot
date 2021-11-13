@@ -33,24 +33,23 @@ class DataConnection {
 	 */
 	async open(options) {
 		this._config = Object.assign({
-			url: "mongodb://localhost:27017",
-			database: "",
+			url: "mongodb://127.0.0.1:27017",
+			database: "test",
 			options: {
 				socketTimeoutMS: 90000,
-				keepAlive: true,
-				poolSize: 10,
+				keepAlive: false,
 				useUnifiedTopology: true
 			}
 		}, options || {})
 		if (!this._key) {
 			this._key = `${this._config.url}${this._config.database}`
 		}
-		if (!_conns[this._key]) {		
-			this._conn = new MongoClient()	
-			await this._conn.connect(this._config.url, this._config.options)
+		if (!_conns[this._key]) {
+			this._conn = new MongoClient(this._config.url, this._config.options)
+			await this._conn.connect()
 			this._db = this._conn.db(this._config.database)
 			_conns[this._key] = this
-		}else{
+		} else {
 			this._conn = _conns[this._key]._conn
 			this._db = _conns[this._key]._db
 		}

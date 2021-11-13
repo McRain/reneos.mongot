@@ -1,6 +1,6 @@
 {
   "name": "@reneos/mongot",
-  "version": "1.0.22",
+  "version": "1.0.24",
   "description": "Tool for convenient use of MongoDB database",
   "main": "index.js",
   "type": "module",
