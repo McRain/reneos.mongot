@@ -11,7 +11,7 @@ class DataConnection {
 	}
 
 	/**
-	 * 
+	 * Any string ID for get this connection
 	 * 
 	 */
 	constructor(key) {
