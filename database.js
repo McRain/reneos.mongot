@@ -28,7 +28,7 @@ let _options = {
 		return _conn
 	}
 
-	static get Database() {
+	static get Db() {
 		return _db
 	}
 

@@ -8,7 +8,7 @@ import Database from "./database.js"
 const DataManager = new Proxy(Database, {
 	get(target, prop) {
 		if (target[prop] === undefined)
-			target[prop] = _db.collection(prop.toLowerCase())
+			target[prop] = Database.Db.collection(prop.toLowerCase())
 		return target[prop]
 	}
 })
