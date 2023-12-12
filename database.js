@@ -6,7 +6,6 @@ let _conn
 
 let _options = {
 	socketTimeoutMS: 90000,
-	keepAlive: false,
 	minPoolSize: 1,
 	maxPoolSize: 10
 
@@ -21,7 +20,7 @@ let _options = {
 	}
 
 	static get Client() {
-		return Mongo.MongoClient
+		return MongoClient
 	}
 
 	static get Connection() {
@@ -30,14 +29,6 @@ let _options = {
 
 	static get Db() {
 		return _db
-	}
-
-	static get ID() {
-		return Mongo.ObjectID()
-	}
-
-	static GenerateID() {
-		return Mongo.ObjectID()
 	}
 
 	static async Init(config) {

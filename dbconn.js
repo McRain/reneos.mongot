@@ -37,8 +37,8 @@ class DataConnection {
 			database: "test",
 			options: {
 				socketTimeoutMS: 90000,
-				keepAlive: false,
-				useUnifiedTopology: true
+				minPoolSize: 1,
+				maxPoolSize: 10
 			}
 		}, options || {})
 		if (!this._key) {

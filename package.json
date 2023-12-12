@@ -1,6 +1,6 @@
 {
   "name": "@reneos/mongot",
-  "version": "1.0.28",
+  "version": "1.0.31",
   "description": "Tool for convenient use of MongoDB database",
   "main": "index.js",
   "type": "module",
@@ -21,6 +21,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "mongodb": "6.2.0"
+    "mongodb": "6.3.0"
   }
 }
